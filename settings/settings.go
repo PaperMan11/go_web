@@ -8,10 +8,11 @@ import (
 )
 
 func Init() (err error) {
-	viper.SetConfigName("config") // 指定配置文件名称（不需要要带后缀）
-	viper.SetConfigType("yaml")   // 指定配置文件类型
-	viper.AddConfigPath(".")      // 指定查找配置文件的路径
-	err = viper.ReadInConfig()    // 读取配置信息
+	viper.SetConfigFile("config.yaml")
+	// viper.SetConfigName("config") // 指定配置文件名称（不需要要带后缀）
+	// viper.SetConfigType("yaml")   // 指定配置文件类型（专用于从远程获取配置信息时指定的配置文件类型）
+	viper.AddConfigPath(".")   // 指定查找配置文件的路径
+	err = viper.ReadInConfig() // 读取配置信息
 	if err != nil {
 		fmt.Println("viper.ReadInConfig failed err:", err)
 		return
